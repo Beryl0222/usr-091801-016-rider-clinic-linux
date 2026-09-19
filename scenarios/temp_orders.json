@@ -1,0 +1,21 @@
+{
+  "name": "临时派单改期与容量回流",
+  "riders": [
+    {"id": "r1", "name": "骑手一", "area": "城东", "team_id": "team-a", "insurance": "employee", "package": "plus-v2"},
+    {"id": "r2", "name": "骑手二", "area": "城东", "team_id": "team-b", "insurance": "resident", "package": "basic-v1"},
+    {"id": "r3", "name": "骑手三", "area": "城东", "team_id": "team-a", "insurance": "none", "package": "none"},
+    {"id": "r4", "name": "骑手四", "area": "城东", "team_id": "team-b", "insurance": "resident", "package": "none"}
+  ],
+  "shifts": [
+    {"id": "s1", "doctor_id": "d1", "point_id": "sp-center", "date": "2026-09-21", "start": "09:00", "end": "11:00", "services": ["consult_15m", "tcm_30m"]}
+  ],
+  "ops": [
+    {"op": "submit_window", "rider_id": "r1", "date": "2026-09-21", "start": "09:00", "end": "09:30", "area": "城东", "service": "consult_15m", "as": "a1"},
+    {"op": "submit_window", "rider_id": "r2", "date": "2026-09-21", "start": "09:00", "end": "09:30", "area": "城东", "service": "consult_15m", "as": "a2"},
+    {"op": "submit_window", "rider_id": "r3", "date": "2026-09-21", "start": "09:00", "end": "10:00", "area": "城东", "service": "tcm_30m", "as": "a3"},
+    {"op": "reschedule", "appointment": "@a1", "reason": "temp_order", "window": {"date": "2026-09-21", "start": "10:00", "end": "10:30", "area": "城东"}},
+    {"op": "submit_window", "rider_id": "r4", "date": "2026-09-21", "start": "09:00", "end": "09:30", "area": "城东", "service": "consult_15m", "as": "a4"},
+    {"op": "cost_estimate", "rider_id": "r1", "service": "consult_15m"},
+    {"op": "cost_estimate", "rider_id": "r2", "service": "tcm_30m"}
+  ]
+}

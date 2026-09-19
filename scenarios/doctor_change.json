@@ -1,0 +1,20 @@
+{
+  "name": "医生出诊变化下的医疗优先级",
+  "riders": [
+    {"id": "r1", "name": "骑手一", "area": "城东", "team_id": "team-a", "insurance": "employee", "package": "none"},
+    {"id": "r2", "name": "骑手二", "area": "城东", "team_id": "team-a", "insurance": "resident", "package": "none"},
+    {"id": "r3", "name": "骑手三", "area": "城东", "team_id": "team-b", "insurance": "employee", "package": "none"},
+    {"id": "r4", "name": "骑手四", "area": "城东", "team_id": "team-b", "insurance": "resident", "package": "none"}
+  ],
+  "shifts": [
+    {"id": "s1", "doctor_id": "d1", "point_id": "sp-center", "date": "2026-09-22", "start": "09:00", "end": "10:00", "services": ["consult_15m"]}
+  ],
+  "ops": [
+    {"op": "submit_window", "rider_id": "r1", "date": "2026-09-22", "start": "09:00", "end": "09:30", "area": "城东", "service": "consult_15m", "as": "a1"},
+    {"op": "submit_window", "rider_id": "r2", "date": "2026-09-22", "start": "09:00", "end": "09:30", "area": "城东", "service": "consult_15m", "as": "a2"},
+    {"op": "submit_window", "rider_id": "r3", "date": "2026-09-22", "start": "09:00", "end": "10:00", "area": "城东", "service": "consult_15m", "priority": 1, "priority_reason": "血压偏高复测", "as": "a3"},
+    {"op": "submit_window", "rider_id": "r4", "date": "2026-09-22", "start": "09:00", "end": "10:00", "area": "城东", "service": "consult_15m", "priority": 2, "priority_reason": "胸痛待排查", "as": "a4"},
+    {"op": "create_shift", "id": "s2", "doctor_id": "d2", "point_id": "sp-center", "date": "2026-09-22", "start": "09:00", "end": "09:30", "services": ["consult_15m"]},
+    {"op": "doctor_change", "shift_id": "s1", "action": "cancel"}
+  ]
+}

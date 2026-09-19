@@ -1,0 +1,18 @@
+{
+  "name": "跨站点跨日随访接续与费用依据",
+  "riders": [
+    {"id": "r1", "name": "骑手一", "area": "城东", "team_id": "team-a", "insurance": "employee", "package": "plus-v2"}
+  ],
+  "shifts": [
+    {"id": "s1", "doctor_id": "d1", "point_id": "sp-center", "date": "2026-09-30", "start": "09:00", "end": "10:00", "services": ["consult_15m", "tcm_30m"]},
+    {"id": "s2", "doctor_id": "d4", "point_id": "sp-union", "date": "2026-10-01", "start": "14:00", "end": "16:00", "services": ["outreach", "consult_15m"]}
+  ],
+  "ops": [
+    {"op": "submit_window", "rider_id": "r1", "date": "2026-09-30", "start": "09:00", "end": "09:30", "area": "城东", "service": "consult_15m", "as": "a1"},
+    {"op": "checkin", "appointment": "@a1", "arrival": "09:03"},
+    {"op": "outcome", "appointment": "@a1", "kind": "formal_referral", "referral_target": "市一医院心内科", "diagnosis": "高血压2级", "note": "建议尽快专科就诊"},
+    {"op": "submit_window", "rider_id": "r1", "date": "2026-10-01", "start": "14:00", "end": "15:00", "area": "城东", "service": "outreach", "as": "a2"},
+    {"op": "cost_estimate", "rider_id": "r1", "service": "consult_15m"},
+    {"op": "cost_estimate", "rider_id": "r1", "service": "tcm_30m"}
+  ]
+}
